@@ -15,7 +15,6 @@ int main(int argc __attribute__((unused)), char **argv)
 	char *buffer = NULL, **my_tokens = NULL;
 	size_t size_of_buf = 40;
 	int is_terminal = isatty(STDIN_FILENO);
-	pid_t pid;
 
 	buffer = (char *)malloc(size_of_buf * sizeof(char));
 
@@ -35,15 +34,7 @@ int main(int argc __attribute__((unused)), char **argv)
 		if (*buffer == '\n')
 			continue;
 
-		pid = fork();
-		if (pid < 0)
-		{
-			perror("fork failed");
-			exit(EXIT_FAILURE);
-		} else if (pid == 0)
-			tokenize_args(buffer, argv[0], my_tokens);
-		else
-			wait(NULL);
+		tokenize_args(buffer, argv[0], my_tokens);
 	}
 	return (0);
 }
