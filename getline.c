@@ -14,6 +14,7 @@ int main(int argc __attribute__((unused)), char **argv)
 {
 	char *buffer = NULL, **my_tokens = NULL;
 	size_t size_of_buf = 40;
+	int is_terminal = isatty(STDIN_FILENO);
 	pid_t pid;
 
 	buffer = (char *)malloc(size_of_buf * sizeof(char));
@@ -25,7 +26,8 @@ int main(int argc __attribute__((unused)), char **argv)
 	}
 	for (; ;)
 	{
-		printf("#cisfun$ ");
+		if (is_terminal)
+			printf("#cisfun$ ");
 
 		if (getline(&buffer, &size_of_buf, stdin) == EOF)
 			break;
