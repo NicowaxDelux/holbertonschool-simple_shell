@@ -34,7 +34,7 @@ void execute_command(char *str, char **my_tokens)
 	if ((execve(my_tokens[0], my_tokens, NULL)) == -1)
 	{
 		fprintf(stderr, "%s: %s\n", str, strerror(errno));
-		exit(errno);
+		exit(175);
 	}
 	/*}*/
 }

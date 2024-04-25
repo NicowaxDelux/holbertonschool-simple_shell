@@ -36,5 +36,6 @@ int main(int argc __attribute__((unused)), char **argv)
 
 		tokenize_args(buffer, argv[0], my_tokens);
 	}
+	free(buffer);
 	return (0);
 }
