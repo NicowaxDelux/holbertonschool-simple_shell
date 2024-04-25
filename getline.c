@@ -16,13 +16,6 @@ int main(int argc __attribute__((unused)), char **argv)
 	size_t size_of_buf = 40;
 	int is_terminal = isatty(STDIN_FILENO);
 
-	buffer = (char *)malloc(size_of_buf * sizeof(char));
-
-	if (buffer == NULL)
-	{
-		free(buffer);
-		exit(1);
-	}
 	for (; ;)
 	{
 		if (is_terminal)
@@ -31,8 +24,9 @@ int main(int argc __attribute__((unused)), char **argv)
 		if (getline(&buffer, &size_of_buf, stdin) == EOF)
 			break;
 
-		if (*buffer == '\n')
-			continue;
+		/*if (*buffer == '\n')
+		 *continue;
+		 */
 
 		tokenize_args(buffer, argv[0], my_tokens);
 	}

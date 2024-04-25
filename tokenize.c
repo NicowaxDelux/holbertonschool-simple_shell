@@ -13,16 +13,11 @@
 void tokenize_args(char *buffer, char *str, char **my_tokens)
 {
 	char *token = NULL;
-	int i = 0;
+	int i = 0, status;
 	pid_t pid;
 	my_tokens = NULL;
 
 	my_tokens = malloc(sizeof(char *) * 1024);
-	if (my_tokens == NULL)
-	{
-		free(my_tokens);
-		exit(1);
-	}
 
 	token = strtok(buffer, " \n");
 	for (i = 0; token != NULL; i++)
@@ -33,12 +28,13 @@ void tokenize_args(char *buffer, char *str, char **my_tokens)
 	my_tokens[i] = NULL;
 
 	pid = fork();
-	if (pid < 0)
+	if (pid == -1)
 	{
 		perror("fork failed");
-		exit(EXIT_FAILURE);
-	} else if (pid == 0)
+		exit(41);
+	}
+	if (pid == 0)
 		execute_command(str, my_tokens);
 	else
-		wait(NULL);
+		wait(&status);
 }
