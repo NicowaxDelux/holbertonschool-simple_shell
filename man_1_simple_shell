@@ -1,0 +1,21 @@
+.TH man 1 "16 - April - 2024" 0.1 "simple shell man page"
+
+.SH NAME
+.B Simple shell
+- create in C and linux operating system
+
+.SH SYNOPSIS
+ hsh [options] [filename]
+
+.SH DESCRIPTION
+.B hsh
+Is a personal UNIX command line interpreter, fully written in C language. It processes commands entered through standard input and manages memory effectively.
+
+
+
+
+ .SH OPTIONS
+ -\-
+
+ .SH AUTHORS
+ Nicolas Rondon and Clever Perea
