@@ -4,7 +4,7 @@
   * execute_command - excute a argument
   *
   * @str: argv[0]
-  *
+  * @command: buffer
   * @my_tokens: tokens
   */
 
