@@ -24,9 +24,8 @@ int main(int argc __attribute__((unused)), char **argv)
 		if (getline(&buffer, &size_of_buf, stdin) == EOF)
 			break;
 
-		/*if (*buffer == '\n')
-		 *continue;
-		 */
+		if (*buffer == '\n')
+		continue;
 
 		tokenize_args(buffer, argv[0], my_tokens);
 	}
