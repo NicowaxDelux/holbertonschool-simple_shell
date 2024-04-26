@@ -16,7 +16,7 @@ void tokenize_args(char *buffer, char *str, char **my_tokens)
 	int i = 0, j = 0;
 
 	my_tokens = malloc(sizeof(char *) * BUFFER_SIZE);
-	if(my_tokens == NULL)
+	if (my_tokens == NULL)
 	{
 		free(my_tokens);
 		exit(1);
@@ -29,9 +29,9 @@ void tokenize_args(char *buffer, char *str, char **my_tokens)
 		token = strtok(NULL, delimiters);
 	}
 	my_tokens[i] = NULL;
-	for(j = 0; j < i; j++)
+	for (j = 0; j < i; j++)
 	{
-		if(*(my_tokens[j]) != '\0')
+		if (*(my_tokens[j]) != '\0')
 		{
 			execute_command(str, my_tokens[j], my_tokens);
 		}
