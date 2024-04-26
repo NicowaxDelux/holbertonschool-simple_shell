@@ -18,7 +18,7 @@ void tokenize_args(char *buffer, char *str, char **my_tokens)
 	my_tokens = NULL;
 
 	my_tokens = malloc(sizeof(char *) * 1024);
-	if(my_tokens == -1)
+	if(my_tokens == NULL)
 	{
 		free(my_tokens);
 		exit(1);
