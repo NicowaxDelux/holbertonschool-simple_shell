@@ -13,7 +13,6 @@
 void tokenize_args(char *buffer, char *str, char **my_tokens)
 {
 	char *token = NULL, *delimiters = " \t\n";
-	char *args[] = {"./hbtn_ls", "/var", NULL};
 	int i = 0, j = 0;
 
 	my_tokens = malloc(sizeof(char *) * BUFFER_SIZE);
