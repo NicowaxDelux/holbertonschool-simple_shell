@@ -24,9 +24,19 @@ int main(int argc __attribute__((unused)), char **argv)
 		if (getline(&buffer, &size_of_buf, stdin) == EOF)
 			break;
 
-		if (*buffer == '\n')
-		continue;
+		  if (strcmp(buffer, "exit\n") == 0)
+		  { 
+		  	free(buffer);
+            	   	return (0);
+                  }	
 
+		  if (strcmp(buffer, "env\n") == 0)
+		  {
+			  print_environment();
+			  continue;
+		  }
+		if (*buffer == '\n')
+			continue;
 		tokenize_args(buffer, argv[0], my_tokens);
 	}
 	free(buffer);

@@ -11,7 +11,47 @@
 .B hsh
 Is a personal UNIX command line interpreter, fully written in C language. It processes commands entered through standard input and manages memory effectively.
 
+.SH USAGE / COMPILATION
+All files are to be compiled using "gcc -Wall -Werror -Wextra -pedantic *.c -o hsh"
 
+.SH RETURN VALUE
+.B hsh
+will return the exit stat, unless specified by an exit code.
+
+.SH EXAMPLES
+=========================================
+
+.SH INTERACTIVE MODE EXAMPLE
+.PP
+.PP
+$ ./hsh
+.PP
+##---> /bin/ls
+.PP
+hsh main.c shell.c
+.PP
+##---> exit
+.PP
+$
+.PP
+.PP
+=========================================
+
+.SH NON-INTERACTIVE MODE EXAMPLE
+.PP
+.PP
+$ echo "/bin/ls" | ./hsh
+.PP
+.PP
+hsh main.c shell.c test_ls_1
+
+=========================================
+
+.SH SEE ALSO
+.I sh(1)
+
+.SH BUGS
+When you type yes it shows an infinite loop.
 
 
  .SH OPTIONS

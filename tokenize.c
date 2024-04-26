@@ -36,5 +36,6 @@ void tokenize_args(char *buffer, char *str, char **my_tokens)
 			execute_command(str, my_tokens[j], my_tokens);
 		}
 	}
+
 	free(my_tokens);
 }
