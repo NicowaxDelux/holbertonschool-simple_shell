@@ -8,33 +8,24 @@
   * @my_tokens: tokens
   */
 
-void execute_command(char *str, char **my_tokens)
+void execute_command(char *str, char *command, char *my_tokens[])
 {
-	/**
-	  *struct stat stats;
-	  *char *args[] = buffer;
-	  *char *path = NULL, *command = NULL;
-	  *my_tokens = NULL;
-	  *
-	  *tokenize_args(buffer, my_tokens);
-	  *
-	  *
-	  *for (i = 0; my_tokens != NULL; i++)
-	  * printf("%s\n", my_tokens[i]);
-	  *
-	  *path = strdup(my_tokens[0]);
-	  *command = strdup(my_tokens);
-	  *printf("%s\n", path);
-	  *
-	  *if (stat(strcat(path, command), &stats) == 0)
-	  *{
-	  *printf("%s\n", path);
-	  */
+	pid_t pid;
 
-	if ((execve(my_tokens[0], my_tokens, NULL)) == -1)
+	pid = fork();
+	if (pid == -1)
 	{
-		fprintf(stderr, "%s: %s\n", str, strerror(errno));
-		exit(175);
+		perror("fork failed");
+		exit(41);
 	}
-	/*}*/
+	if (pid == 0)
+	{
+		if ((execve(command, my_tokens, NULL)) == -1)
+		{
+			fprintf(stderr, "%s: %s\n", str, strerror(errno));
+			exit(175);
+		}
+	}
+	else
+		wait(NULL);
 }

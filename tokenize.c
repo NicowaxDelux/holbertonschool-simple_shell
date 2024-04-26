@@ -1,5 +1,5 @@
 #include "header.h"
-
+#define BUFFER_SIZE 1024
 /**
   * tokenize_args - tokenize arguments and saved token
   *
@@ -12,36 +12,30 @@
 
 void tokenize_args(char *buffer, char *str, char **my_tokens)
 {
-	char *token = NULL;
-	int i = 0, status;
-	pid_t pid;
-	my_tokens = NULL;
+	char *token = NULL, *delimiters = " \t\n";
+	int i = 0, j = 0;
 
-	my_tokens = malloc(sizeof(char *) * 1024);
+	my_tokens = malloc(sizeof(char *) * BUFFER_SIZE);
 	if(my_tokens == NULL)
 	{
 		free(my_tokens);
 		exit(1);
 	}
 
-	token = strtok(buffer, " \t\n");
+	token = strtok(buffer, delimiters);
 	for (i = 0; token != NULL; i++)
 	{
 		my_tokens[i] = token;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, delimiters);
 	}
 	my_tokens[i] = NULL;
-
-	pid = fork();
-	if (pid == -1)
+	for(j = 0; j < i; j++)
 	{
-		perror("fork failed");
-		exit(41);
+		if(*(my_tokens[j]) != '\0')
+		{
+			execute_command(str, my_tokens[j], my_tokens);
+		}
 	}
-	if (pid == 0)
-		execute_command(str, my_tokens);
-	else
-		wait(&status);
 
 	free(my_tokens);
 }

@@ -9,6 +9,6 @@
 #include <errno.h>
 #include <sys/wait.h>
 
-void execute_command(char *, char **);
+void execute_command(char *, char *,char **);
 void tokenize_args(char *, char *, char **);
 #endif
