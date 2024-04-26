@@ -9,7 +9,7 @@
 #include <errno.h>
 #include <sys/wait.h>
 
-void execute_command(char *, char *,char **);
+void execute_command(char *, char *, char **);
 void tokenize_args(char *, char *, char **);
 void print_environment(void);
 #endif
